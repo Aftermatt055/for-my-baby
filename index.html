@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Envelope Love Letter</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffc0cb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Georgia', serif;
+    }
+
+    .container {
+      perspective: 1000px;
+    }
+
+    .envelope {
+      width: 300px;
+      height: 200px;
+      background: #fff;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+      cursor: pointer;
+    }
+
+    .flap {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: #fff;
+      transform-origin: top;
+      transition: transform 1s;
+      z-index: 2;
+      border-bottom: 1px solid #ccc;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    /* Heart sticker */
+    .sticker {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 24px;
+      z-index: 3;
+      transition: opacity 0.5s;
+      pointer-events: none; /* makes it not block clicking */
+    }
+
+    .envelope.open .sticker {
+      opacity: 0; /* hide when open */
+    }
+
+    .letter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      background: #fff;
+      overflow-y: auto;
+      transform: rotateX(-90deg);
+      transition: transform 1s, opacity 1s;
+      opacity: 0;
+      z-index: 1;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    .envelope.open .flap {
+      transform: rotateX(-180deg);
+    }
+
+    .envelope.open .letter {
+      transform: rotateX(0deg);
+      opacity: 1;
+      z-index: 3;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    .letter::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .letter::-webkit-scrollbar-thumb {
+      background: #ff85a2;
+      border-radius: 10px;
+    }
+.polaroid {
+      width: 100%;
+      margin-top: 20px;
+      background: white;
+      padding: 10px 10px 30px 10px; /* bottom padding for caption space */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .envelope.open .polaroid {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .polaroid img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+    }
+    .instruction {
+      text-align: center;
+      margin-top: 10px;
+      color: #fff;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="envelope" id="envelope">
+      <div class="flap"></div>
+      <!-- Heart-shaped sticker -->
+      <div class="sticker">❤️</div>
+
+      <div class="letter">
+        <h1>To my dearest, Ira </h1>
+        <p>
+          Hi pretty super random neto but it's one of my activities din naman na later na yung deadline hahaha i know im not good at writing letters but hopefully this one is. (panis ka ) 
+        </p>
+        <p>
+          i perceive all your words within me and use them as my strength and motivation. 
+          i really appreciate you pretty, actually having you in my life was really unexpected, but your presence filled the spaces i never realized were empty.
+        </p>
+        <p>
+          anyways i hope this letter wraps around you like my arms would, if only I were there. Until then, let these words be a gentle reminder: you are deeply loved, beyond words, beyond time.
+        </p>
+        <p class="signature">
+          Matt :D,<br>
+          ❤️
+        </p>
+      <div class="polaroid">
+          <img src="c:\Users\Matt Fuertez\Downloads\64d71fe6-13fe-4b65-b279-d634b2823066.jpg">
+          <div class="caption">so pretty 💖</div>
+      </div>
+    </div>
+    <div class="instruction">Click the envelope to open/close</div>
+  </div>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
